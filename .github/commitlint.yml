@@ -1,6 +1,8 @@
 name: CI
 
-on: [commitlint]
+on:
+  push:
+    branches: ['commitlint']
 
 jobs:
   commitlint:
