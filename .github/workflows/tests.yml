@@ -12,9 +12,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
+      - name: "Install dependencies"
+        run: npm ci
       - name: "Run unit tests"
         run: |
-          npm ci
           npm run test-ci
 
   e2e-tests:
@@ -24,8 +25,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: "Run e2e tests"
+      - name: "Install dependencies"
         run: |
           npm ci
           npx playwright install --with-deps chromium
+      - name: "Run e2e tests"
+        run: |
           npm run e2e-ci
