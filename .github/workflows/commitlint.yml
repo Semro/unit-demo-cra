@@ -1,8 +1,6 @@
 name: commitlint
 
-on:
-  push:
-    branches: ['commitlint']
+on: [pull_request]
 
 jobs:
   commitlint:
