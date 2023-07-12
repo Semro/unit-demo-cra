@@ -1,9 +1,9 @@
-name: lint
+name: lintcode
 
 on: [pull_request]
 
 jobs:
-  lint-code:
+  lintcode:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
