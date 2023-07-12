@@ -28,4 +28,4 @@ jobs:
         run: |
           npm ci
           npx playwright install --with-deps chromium
-          CI=true npm run e2e
+          npm run e2e-ci
