@@ -1,0 +1,17 @@
+name: tests
+
+on:
+  push:
+    branches: ['tests']
+
+jobs:
+  commitlint:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: "Run unit tests"
+        run: |
+          npm run test-ci
