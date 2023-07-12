@@ -18,6 +18,7 @@ it('по адресу /about должна открываться страниц�
       </Provider>
     </MemoryRouter>
   );
+  
 
   const { getByTestId } = render(application);
 
