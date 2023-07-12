@@ -15,13 +15,6 @@ jobs:
           node-version: 14
           cache: npm
           cache-dependency-path: "**/package-lock.json"
-
-      - name: Print versions
-        run: |
-          git --version
-          node --version
-          npm --version
-          npx commitlint --version
           
       - name: Install commitlint
         run: |
