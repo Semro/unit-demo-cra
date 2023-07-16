@@ -15,7 +15,7 @@ jobs:
   unit-tests:
     runs-on: ubuntu-22.04
     outputs:
-      job-url: $${{ steps.job-url.JOB_URL }}
+      job-url: ${{ steps.job-url.JOB_URL }}
     steps:
       - uses: actions/checkout@v3
 
@@ -37,7 +37,7 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-22.04
     outputs:
-      job-url: $${{ steps.job-url.JOB_URL }}
+      job-url: ${{ steps.job-url.JOB_URL }}
     steps:
       - uses: actions/checkout@v3
 
