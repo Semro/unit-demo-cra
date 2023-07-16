@@ -1,5 +1,5 @@
 ---
-title: RELEASE {{ env.VERSION }}
+title: RELEASE
 ---
 
 # RELEASE {{ env.VERSION }}
