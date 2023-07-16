@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "https://semro.github.io/unit-demo-cra-private/static/css/main.bca2b5ee.css",
+    "main.js": "https://semro.github.io/unit-demo-cra-private/static/js/main.7fd664e5.js",
+    "index.html": "https://semro.github.io/unit-demo-cra-private/index.html",
+    "main.bca2b5ee.css.map": "https://semro.github.io/unit-demo-cra-private/static/css/main.bca2b5ee.css.map",
+    "main.7fd664e5.js.map": "https://semro.github.io/unit-demo-cra-private/static/js/main.7fd664e5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.bca2b5ee.css",
+    "static/js/main.7fd664e5.js"
+  ]
+}
