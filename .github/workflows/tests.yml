@@ -9,13 +9,13 @@ on:
         value: ${{ jobs.unit-tests.outputs.job-url }}
       e2e-job-url:
         description: "E2E tests job url"
-        value: ${{ jobs.e2e-tests.job-url }}
+        value: ${{ jobs.e2e-tests.outputs.job-url }}
 
 jobs:
   unit-tests:
     runs-on: ubuntu-22.04
     outputs:
-      job-url: ${{ steps.job-url.JOB_URL }}
+      job-url: ${{ steps.job-url.outputs.JOB_URL }}
     steps:
       - uses: actions/checkout@v3
 
@@ -37,7 +37,7 @@ jobs:
   e2e-tests:
     runs-on: ubuntu-22.04
     outputs:
-      job-url: ${{ steps.job-url.JOB_URL }}
+      job-url: ${{ steps.job-url.outputs.JOB_URL }}
     steps:
       - uses: actions/checkout@v3
 
