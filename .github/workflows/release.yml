@@ -17,6 +17,6 @@ jobs:
           AUTHOR: author_test
           DATE: date_test
           VERSION: version_test
-          CHANGELOG: changelog_test
+          CHANGELOG: changelog_test1
         with:
           update_existing: true
