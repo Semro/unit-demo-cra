@@ -1,11 +1,6 @@
 ---
-title: RELEASE
+title: Someone just pushed
+assignees: JasonEtco, matchai
+labels: bug, enhancement
 ---
-
-# RELEASE {{ env.VERSION }}
- - Author: {{ env.AUTHOR }}
- - Release date: {{ env.DATE }}
-
-## Changelog
-
-{{ env.CHANGELOG }}
+Someone just pushed, oh no! Here's who did it: {{ payload.sender.login }}.
