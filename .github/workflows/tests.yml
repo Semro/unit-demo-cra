@@ -53,3 +53,10 @@ jobs:
 
       - name: Run e2e tests
         run: npm run e2e-ci
+  create-url:
+    needs: [unit-tests, e2e-tests]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - name: Add tests URL to GITHUB_ENV
+        run: echo "TESTS_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
