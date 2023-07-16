@@ -18,3 +18,5 @@ jobs:
           DATE: date_test
           VERSION: version_test
           CHANGELOG: changelog_test
+        with:
+          update_existing: true
