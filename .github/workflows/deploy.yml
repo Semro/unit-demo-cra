@@ -1,4 +1,4 @@
-name: tests
+name: deploy
 
 on:
   push:
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  unit-tests:
+  deploy:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
