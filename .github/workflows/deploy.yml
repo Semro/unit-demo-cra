@@ -22,7 +22,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: PUBLIC_URL="/unit-demo-cra-private" npm run build
+        run: PUBLIC_URL="/${{ github.event.repository.name }}" npm run build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
