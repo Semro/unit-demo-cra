@@ -9,3 +9,6 @@ labels: release
 ## CHANGELOG
 
 {{ env.CHANGELOG }}
+
+## TESTS
+{{ env.TESTS }}

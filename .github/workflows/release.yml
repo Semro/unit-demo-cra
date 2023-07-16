@@ -8,7 +8,14 @@ permissions:
 
 jobs:
   run-tests:
-    uses: ./.github/workflows/tests.yml
+    runs-on: ubuntu-22.04
+    outputs:
+      run-tests:  ${{ steps.tests_url.outputs.TESTS_URL }}
+    steps:
+      - uses: ./.github/workflows/tests.yml
+      - name: Output action URL
+        id: tests_url
+        run: echo "TESTS_URL=${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" >> $GITHUB_ENV
   create-release-issue:
     runs-on: ubuntu-22.04
     steps:
@@ -26,6 +33,8 @@ jobs:
           AUTHOR: author_test
           DATE: date_test
           VERSION: version_test
+          TESTS: ${{needs.run-tests.outputs.run-tests}}
           CHANGELOG: ${{ steps.changelog.outputs.changes }}
         with:
           update_existing: true
+    needs: [run-tests]
