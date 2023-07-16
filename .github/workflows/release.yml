@@ -2,6 +2,10 @@ name: release
 
 on: [push]
 
+permissions:
+  issues: write
+  contents: read
+
 jobs:
   create-release-issue:
     runs-on: ubuntu-22.04
