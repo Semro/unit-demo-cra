@@ -12,6 +12,7 @@ jobs:
     outputs:
       run-tests:  ${{ steps.tests_url.outputs.TESTS_URL }}
     steps:
+      - uses: actions/checkout@v3
       - uses: ./.github/workflows/tests.yml
       - name: Output action URL
         id: tests_url
