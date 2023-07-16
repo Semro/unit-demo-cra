@@ -11,4 +11,5 @@ labels: release
 {{ env.CHANGELOG }}
 
 ## TESTS
-{{ env.TESTS }}
+- [unit tests results]({{ env.JOB_URL_UNIT_TESTS }})
+- [E2E tests results]({{ env.JOB_URL_E2E_TESTS }})
