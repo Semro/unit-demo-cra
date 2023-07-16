@@ -18,5 +18,3 @@ jobs:
           DATE: date_test
           VERSION: version_test
           CHANGELOG: changelog_test
-        with:
-          filename: .github/workflows/release/ISSUE_RELEASE_TEMPLATE.md
