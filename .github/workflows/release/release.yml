@@ -1,0 +1,18 @@
+name: release
+
+on: [push]
+
+jobs:
+  create-release-issue:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: JasonEtco/create-an-issue@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR: author_test
+          DATE: date_test
+          VERSION: version_test
+          CHANGELOG: changelog_test
+        with:
+          filename: .github/workflows/release/ISSUE_RELEASE_TEMPLATE.md
