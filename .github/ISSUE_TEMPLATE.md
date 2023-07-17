@@ -4,7 +4,7 @@ labels: release
 ---
 # RELEASE {{ env.VERSION }}
 - Author: {{ env.AUTHOR }}
-- Date: {{ env.DATE }}
+- Date: {{ date | date('dddd, MMMM Do') }}
 
 ## CHANGELOG
 

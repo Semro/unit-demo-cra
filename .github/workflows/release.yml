@@ -27,9 +27,8 @@ jobs:
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          AUTHOR: author_test
-          DATE: date_test
-          VERSION: version_test
+          AUTHOR: ${{ github.actor }}
+          VERSION: ${{ github.ref_name }} 
           JOB_URL_E2E_TESTS: ${{ needs.run-tests.outputs.e2e-job-url }}
           JOB_URL_UNIT_TESTS: ${{ needs.run-tests.outputs.unit-job-url }}
           CHANGELOG: ${{ steps.changelog.outputs.changes }}
