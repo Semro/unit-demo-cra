@@ -1,6 +1,9 @@
 name: release
 
-on: [workflow_dispatch]
+on:
+  push:
+    tags:
+      - 'v\d+'
 
 permissions:
   issues: write
