@@ -60,7 +60,7 @@ jobs:
 
   close-issue:
     runs-on: ubuntu-22.04
-    needs: deploy
+    needs: [deploy, issue-add-tests-results]
     steps:
       - uses: peter-evans/close-issue@v3
         with:
