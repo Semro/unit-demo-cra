@@ -63,9 +63,23 @@ jobs:
     needs: run-tests
     uses: ./.github/workflows/deploy.yml
 
-  close-issue:
+  add-deploy-comment:
     runs-on: ubuntu-22.04
     needs: [deploy, issue-add-tests-results]
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: ${{ needs.issue-add-tests-results.outputs.issue-number }},
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Deployed successfully! 🚀'
+            })
+
+  close-issue:
+    runs-on: ubuntu-22.04
+    needs: [add-deploy-comment, issue-add-tests-results]
     steps:
       - uses: actions/github-script@v6
         with:
