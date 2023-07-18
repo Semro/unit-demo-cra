@@ -61,9 +61,14 @@ jobs:
 
   close-issue:
     runs-on: ubuntu-22.04
-    needs: [deploy, issue-add-tests-results]
     steps:
-      - uses: peter-evans/close-issue@v3
+      - uses: actions/github-script@v6
         with:
-          issue-number: ${{ needs.issue-add-tests-results.steps.create-issue.outputs.number }}
-          comment: 'Deployed successfully! 🚀'
+          script: |
+            github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: ${{ needs.issue-add-tests-results.steps.create-issue.outputs.number }},
+              state: "closed",
+              state_reason: 'Deployed successfully! 🚀'
+            })
