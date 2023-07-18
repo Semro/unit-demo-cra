@@ -21,7 +21,7 @@ Workflows:
     - После того как прошли проверки, делаем слияние в `master`
     - Добавяем тег в ветке `master`, пушим теги. https://github.com/Semro/unit-demo-cra/releases/tag/v3
     - При создании тега, добавляется запись в реестре релизов https://github.com/Semro/unit-demo-cra/issues/17
-    - Проверки прошли успешно, добавляется коммент об успешном деплое https://github.com/Semro/unit-demo-cra/issues/17#issuecomment-1640768561 (Приложение доступно на [gh-pages](https://semro.github.io/unit-demo-cra/about))
+    - Проверки прошли успешно, добавляется коммент об успешном деплое https://github.com/Semro/unit-demo-cra/issues/17#issuecomment-1640768561 (Приложение доступно на [gh-pages](https://semro.github.io/unit-demo-cra))
     - Issue закрывается со статусом `completed`
 
 ## Условие ДЗ
