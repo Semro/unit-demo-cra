@@ -42,6 +42,8 @@ jobs:
   issue-add-tests-results:
     runs-on: ubuntu-22.04
     needs: [run-tests, create-release-issue]
+    outputs:
+      issue-number: ${{ steps.create-issue.outputs.number }}
     steps:
       - uses: actions/checkout@v3
       - uses: JasonEtco/create-an-issue@v2
@@ -69,7 +71,7 @@ jobs:
             github.rest.issues.update({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: ${{ needs.issue-add-tests-results.steps.create-issue.outputs.number }},
+              issue_number: ${{ needs.issue-add-tests-results.outputs.issue-number }},
               state: 'closed',
               state_reason: 'Deployed successfully! 🚀'
             })
