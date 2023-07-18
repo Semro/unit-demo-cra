@@ -70,6 +70,6 @@ jobs:
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: ${{ needs.issue-add-tests-results.steps.create-issue.outputs.number }},
-              state: "closed",
+              state: 'closed',
               state_reason: 'Deployed successfully! 🚀'
             })
