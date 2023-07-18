@@ -10,11 +10,8 @@ permissions:
   contents: read
 
 jobs:
-  run-tests:
-    uses: ./.github/workflows/tests.yml
-  create-release-issue:
+  create-changelog:
     runs-on: ubuntu-22.04
-    needs: run-tests
     steps:
       - uses: actions/checkout@v3
       - name: Update CHANGELOG
@@ -24,13 +21,48 @@ jobs:
           token: ${{ github.token }}
           tag: ${{ github.ref_name }}
 
+  create-release-issue:
+    runs-on: ubuntu-22.04
+    needs: create-changelog
+    steps:
       - uses: JasonEtco/create-an-issue@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           AUTHOR: ${{ github.actor }}
-          VERSION: ${{ github.ref_name }} 
-          JOB_URL_E2E_TESTS: ${{ needs.run-tests.outputs.e2e-job-url }}
-          JOB_URL_UNIT_TESTS: ${{ needs.run-tests.outputs.unit-job-url }}
-          CHANGELOG: ${{ steps.changelog.outputs.changes }}
+          VERSION: ${{ github.ref_name }}
+          TESTS: running tests...
+          CHANGELOG: ${{ needs.create-changelog.steps.changelog.outputs.changes }}
         with:
           update_existing: true
+
+  run-tests:
+    uses: ./.github/workflows/tests.yml
+
+  issue-add-tests-results:
+    runs-on: ubuntu-22.04
+    needs: [run-tests, create-release-issue]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: JasonEtco/create-an-issue@v2
+        id: create-issue
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AUTHOR: ${{ github.actor }}
+          VERSION: ${{ github.ref_name }}
+          TESTS: "[Tests results](${{ needs.run-tests.outputs.tests-job-url }})"
+          CHANGELOG: ${{ needs.create-changelog.steps.changelog.outputs.changes }}
+        with:
+          update_existing: true
+
+  deploy:
+    needs: run-tests
+    uses: ./.github/workflows/deploy.yml
+
+  close-issue:
+    runs-on: ubuntu-22.04
+    needs: deploy
+    steps:
+      - uses: peter-evans/close-issue@v3
+        with:
+          issue-number: ${{ needs.issue-add-tests-results.steps.create-issue.outputs.number }}
+          comment: 'Deployed successfully! 🚀'
