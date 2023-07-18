@@ -10,7 +10,13 @@ Workflows:
 События запуска workflow:
  - При создании, или добавлении новых коммитов в PR запускаются `commitlint`, `lintcode`, `tests`. Смерджить PR не получиться, пока не выполнены проверки.
  - При пуше коммитов с тегом запускается `release`
- - `deploy` - запускается вручную на вкладке Actions
+ - `deploy` - запускается вручную на вкладке [Actions](https://github.com/Semro/unit-demo-cra/actions/workflows/deploy.yml) (надо нажать "Run workflow")
+
+Примеры работы:
+ - Проверки не проходят в PR: https://github.com/Semro/unit-demo-cra/pull/10
+ - Проверки прошли успешно в PR, можно мержить: https://github.com/Semro/unit-demo-cra/pull/11
+ - Успешное создание release issue: https://github.com/Semro/unit-demo-cra/issues/9
+ - Успешный `deploy`: https://github.com/Semro/unit-demo-cra/actions/runs/5584429240/jobs/10205849418. Выложен на gh-pages: https://semro.github.io/unit-demo-cra/
 
 В этом репозитории находится пример приложения с тестами:
 
