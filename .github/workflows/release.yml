@@ -12,6 +12,8 @@ permissions:
 jobs:
   create-changelog:
     runs-on: ubuntu-22.04
+    outputs:
+      changes: ${{ steps.changelog.outputs.changelog }}
     steps:
       - uses: actions/checkout@v3
       - name: Update CHANGELOG
@@ -32,7 +34,7 @@ jobs:
           AUTHOR: ${{ github.actor }}
           VERSION: ${{ github.ref_name }}
           TESTS: running tests...
-          CHANGELOG: ${{ needs.create-changelog.steps.changelog.outputs.changes }}
+          CHANGELOG: ${{ needs.create-changelog.outputs.changes }}
         with:
           update_existing: true
 
@@ -41,7 +43,7 @@ jobs:
 
   issue-add-tests-results:
     runs-on: ubuntu-22.04
-    needs: [run-tests, create-release-issue]
+    needs: [run-tests, create-release-issue, create-changelog]
     outputs:
       issue-number: ${{ steps.create-issue.outputs.number }}
     steps:
@@ -53,7 +55,7 @@ jobs:
           AUTHOR: ${{ github.actor }}
           VERSION: ${{ github.ref_name }}
           TESTS: "[Tests results](${{ needs.run-tests.outputs.tests-job-url }})"
-          CHANGELOG: ${{ needs.create-changelog.steps.changelog.outputs.changes }}
+          CHANGELOG: ${{ needs.create-changelog.outputs.changes }}
         with:
           update_existing: true
 
