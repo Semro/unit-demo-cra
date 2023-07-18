@@ -13,11 +13,10 @@ jobs:
   create-changelog:
     runs-on: ubuntu-22.04
     outputs:
-      changes: ${{ steps.changelog.outputs.changelog }}
+      changes: ${{ steps.changelog.outputs.changes }}
     steps:
       - uses: actions/checkout@v3
-      - name: Update CHANGELOG
-        uses: requarks/changelog-action@v1
+      - uses: requarks/changelog-action@v1
         id: changelog
         with:
           token: ${{ github.token }}
