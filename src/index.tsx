@@ -1,23 +1,25 @@
-import { createRoot } from "react-dom/client";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { Application } from "./Application";
-import { initStore } from "./store";
+import { createRoot } from 'react-dom/client'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+import { Application } from './Application'
+import { initStore } from './store'
 
-import "./index.css";
+import './index.css'
 
-const container = document.getElementById("root");
+const container = document.getElementById('root')
 
 if (container) {
-  const root = createRoot(container);
+  const root = createRoot(container)
 
-  const store = initStore();
+  const store = initStore()
 
-  root.render(
+  const app = (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <Application />
       </Provider>
     </BrowserRouter>
-  );
+  )
+
+  root.render(app)
 }
