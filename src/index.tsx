@@ -13,11 +13,13 @@ if (container) {
 
   const store = initStore()
 
-  root.render(
+  const app = (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Provider store={store}>
         <Application />
       </Provider>
     </BrowserRouter>
   )
+
+  root.render(app)
 }
